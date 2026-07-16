@@ -57,6 +57,7 @@ This project helps beginners learn:
 - Build a graphical interface
 <br>
 <br>
+
 # Project 2: Expense Tracker
 ## About the Project
 This project is a simple Expense Tracker built using Python.
