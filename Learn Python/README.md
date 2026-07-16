@@ -52,24 +52,24 @@ You will learn:
 ## 8. Operators
 Different types of operators are explained.
 ### Arithmetic Operators
-* *
-* *
-* *
-* /
-* %
-* **
+*  -
+*  +
+*  *
+*  /
+*  %
+*  **
 ### Assignment Operators
-* =
-* +=
-* -=
-* *=
+*  =
+*  +=
+*  -=
+*  *=
 ### Relational Operators
-* ==
-* !=
-* >
-* <
-* > =
-* <=
+*  ==
+*  !=
+*  >
+*  <
+*  >=
+*  <=
 ### Logical Operators
 * and
 * or
@@ -202,6 +202,3 @@ This notebook is perfect for:
 * Practice code included
 * Covers both Python basics and NumPy fundamentals
 * Well organized into separate topics
-
-
-Keep practicing every topic, modify the examples, and try writing your own programs. Consistent practice is the best way to become confident in Python programming.
