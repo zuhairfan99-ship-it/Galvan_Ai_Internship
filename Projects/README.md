@@ -110,6 +110,7 @@ This project teaches:
 - Expense editing and deleting
 <br>
 <br>
+
 # Project 3: Inventory Management System
 ## About the Project
 This is a basic Inventory Management System created using Python.
@@ -160,6 +161,7 @@ Displays:
 - Sales historytory Management System
 <br>
 <br>
+
 # Project 4: Lead Qualification System
 ## About the Project
 This project helps businesses evaluate potential customers (leads).
@@ -211,6 +213,7 @@ Displays:
 - Dashboard
 <br>
 <br>
+
 # Project 5: Task Manager with Priority System
 ## About the Project
 This project helps users organize daily tasks.
@@ -258,6 +261,7 @@ Shows:
 - Save tasks to CSV
 <br>
 <br>
+
 # Project 6: Support Ticket Analyzer
 ## About the Project
 This project automatically analyzes customer support tickets.
@@ -308,6 +312,7 @@ Displays:
 - Response suggestions
 <br>
 <br>
+
 # Project 7: Mini SaaS Backend Simulator
 ## About the Project
 This project is a mini backend system for an AI Automation Agency.
