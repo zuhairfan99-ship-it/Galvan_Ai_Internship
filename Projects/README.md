@@ -55,9 +55,8 @@ This project helps beginners learn:
 - Delete student
 - Update marks
 - Build a graphical interface
-
-
-
+<br>
+<br>
 # Project 2: Expense Tracker
 ## About the Project
 This project is a simple Expense Tracker built using Python.
@@ -108,9 +107,8 @@ This project teaches:
 - Budget alerts
 - Save data to CSV
 - Expense editing and deleting
-
-
-
+<br>
+<br>
 # Project 3: Inventory Management System
 ## About the Project
 This is a basic Inventory Management System created using Python.
@@ -159,9 +157,8 @@ Displays:
 - Low stock alerts
 - CSV database
 - Sales historytory Management System
-
-
-
+<br>
+<br>
 # Project 4: Lead Qualification System
 ## About the Project
 This project helps businesses evaluate potential customers (leads).
@@ -211,9 +208,8 @@ Displays:
 - CRM connection
 - Lead history
 - Dashboard
-
-
-
+<br>
+<br>
 # Project 5: Task Manager with Priority System
 ## About the Project
 This project helps users organize daily tasks.
@@ -259,57 +255,8 @@ Shows:
 - Edit tasks
 - Delete tasks
 - Save tasks to CSV
-
-
-
-# Project 5: Task Manager with Priority System
-## About the Project
-This project helps users organize daily tasks.
-Each task contains important details such as priority, assigned person, due date, and current status.
-## Features
-- Add tasks
-- View all tasks
-- Update task status
-- Filter tasks by status
-- Filter tasks by priority
-- Display tasks using Pandas
-## Technologies Used
-- Python
-- Pandas
-## Functions Included
-### add_task()
-Creates a new task.
-### view_tasks()
-Displays all tasks.
-### update_task_status()
-Changes task status.
-### filter_tasks_by_status()
-Shows tasks with a selected status.
-### filter_tasks_by_priority()
-Displays tasks based on priority.
-## Output
-Shows:
-- Task ID
-- Task Name
-- Assigned To
-- Priority
-- Status
-- Due Date
-## Learning Objectives
-- Task management
-- Lists
-- Dictionaries
-- Functions
-- Filtering data
-## Future Improvements
-- Notifications
-- Calendar integration
-- Edit tasks
-- Delete tasks
-- Save tasks to CSV
-
-
-
+<br>
+<br>
 # Project 6: Support Ticket Analyzer
 ## About the Project
 This project automatically analyzes customer support tickets.
@@ -358,9 +305,8 @@ Displays:
 - Email support
 - Ticket status tracking
 - Response suggestions
-
-
-
+<br>
+<br>
 # Project 7: Mini SaaS Backend Simulator
 ## About the Project
 This project is a mini backend system for an AI Automation Agency.
