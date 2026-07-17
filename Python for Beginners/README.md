@@ -172,7 +172,11 @@ Some ideas to improve this repository include:
 * Add comments and exercises for each lecture.
 # Author
 **Zuha Irfan**
+<br>
+
 BS Software Engineering Student
+<br>
+
 Fatime Jinnah Women University(FJWU)
 # Conclusion
 This repository is a complete beginner's guide to Python programming. It provides lecture notebooks and small projects that help students understand programming concepts in a simple and practical way. By completing these notebooks and projects, learners build a strong foundation in Python and become ready for more advanced topics such as data analysis, automation, machine learning, and software development.
