@@ -72,7 +72,5 @@ After completing this project, you will understand:
 - Internet Connection
 ## Author
 **Zuha Irfan**  
-<br>
 **Bachelor of Software Engineering (BSE)**
-<br>
 **Fatima Jinnah Women University (FJWU)**
