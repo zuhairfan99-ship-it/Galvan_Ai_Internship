@@ -1,188 +1,227 @@
-# Gravity Shift — Vercel + Neon Ready
-This build keeps the existing Gravity Shift gameplay, levels, scoring, player registration, per-level Top 10 leaderboards, admin dashboard/CSV, backup controls, external controller support, offline completion queue, and final victory flow.
-## What changed for production hosting
-- **Local development:** Node 24 + built-in `node:sqlite` if `DATABASE_URL` is empty.
-- **Vercel production:** PostgreSQL (recommended: Neon) when `DATABASE_URL` is present.
-- The official leaderboard is therefore **not stored in Vercel's filesystem**.
-- Admin authentication uses backend environment variables plus a signed, HttpOnly cookie. Admin credentials are never shipped to the browser.
-- Admin sessions are stateless/signed so they do not depend on one Vercel instance's memory.
-- `EVENT_LIVE=true` disables the testing database reset endpoint.
-- No CSV control is shown to public players. CSV is admin-only.
-- Level leaderboards remain independent: `/api/leaderboard/level/1` is only Level 1, `/api/leaderboard/level/2` is only Level 2, etc.
-- Ranking is `completion_time_ms ASC, completed_at ASC`.
-- Completed records use unique game IDs and idempotency keys.
-## IMPORTANT: How the hidden `.env` works
-You do **not** upload `.env` to GitHub.
-The browser does NOT need `.env`.
-The browser shows the admin login form at:
-`/admin`
-When the organizer submits the username/password, the browser sends them to:
-`POST /api/admin/login`
-The backend reads:
-- `ADMIN_USERNAME`
-- `ADMIN_PASSWORD`
-- `ADMIN_SESSION_SECRET`
-from the server environment, verifies the credentials, and sets an HttpOnly authentication cookie.
-So the admin can log in normally even though `.env` is hidden.
-### On Vercel
-Go to:
-**Vercel → your project → Settings → Environment Variables**
-Add:
-```text
-ADMIN_USERNAME=event-admin
-ADMIN_PASSWORD=YOUR_PRIVATE_STRONG_PASSWORD
-ADMIN_SESSION_SECRET=YOUR_LONG_RANDOM_SECRET
-GAME_VERSION=1.2.0
-EVENT_LIVE=false
-DATABASE_URL=YOUR_NEON_POSTGRES_CONNECTION_STRING
+# Gravity Shift
+**Gravity Shift** is a browser-based gravity platformer where players navigate increasingly difficult levels while gravity shifts between different directions. Collect crystals, avoid hazards, reach the goal, and try to earn a place in the shared Top 10 leaderboard.
+## Play the Game
+The game is deployed on Vercel and can be played online:
+**https://zuhairfangravityshiftgame.vercel.app/**
+No installation is required to play the deployed version.
+## Features
+- **100 levels** with progressively harder layouts and gravity mechanics.
+- **4-way gravity**: Down, Up, Left, and Right.
+- Gravity becomes more challenging as the level increases.
+- Collect all **crystals** to unlock the goal.
+- **Red hazards** cause instant death.
+- **3 lives per run**.
+- Score tracking throughout the run.
+- Level selection and level progression.
+- Level replay and next-level controls.
+- **Top 10 global leaderboard** backed by a database.
+- **CSV export** for played-game records.
+- Player and company registration before starting a game.
+- Responsive on-screen controls for Left, Right, and Jump.
+- Keyboard controls for desktop play.
+- Touch controls for supported mobile devices.
+- Visual effects, HUD updates, gravity indicators, and game sounds.
+- Vercel-ready serverless API.
+## How to Play
+### 1. Register
+Before playing, enter:
+- **Player Name**
+- **Company Name**
+Both fields are required.
+### 2. Start the Game
+After registration, open the **Quick Start** instructions and select **Start Playing**.
+### 3. Controls
+| Action | Keyboard | On-Screen Control |
+|---|---|---|
+| Move left | `←` | **LEFT** |
+| Move right | `→` | **RIGHT** |
+| Jump / move away from the current gravity surface | `↑`, `↓`, or `Space` | **JUMP** |
+The game also provides touch-friendly controls for mobile devices.
+### 4. Complete Levels
+Each level requires you to:
+1. Navigate the level.
+2. Adapt to changing gravity.
+3. Collect every crystal.
+4. Avoid red hazards.
+5. Reach the goal.
+When all crystals are collected, the goal becomes available.
+### 5. Manage Your Lives
+You start each run with **3 lives**. Hitting a red hazard costs a life.
+If all three lives are lost, the run ends and the final score is submitted to the leaderboard.
+Completing the final level also ends the run and saves the final score.
+## Gravity System
+Gravity can pull the player in four directions:
+- `DOWN`
+- `UP`
+- `LEFT`
+- `RIGHT`
+The available gravity directions depend on the level:
+- **Levels 1–10:** Down and Up
+- **Levels 11–35:** Down, Up, and Left
+- **Levels 36–100:** Down, Up, Left, and Right
+Gravity shifts automatically during gameplay, so timing and positioning are essential.
+## Scoring & Leaderboard
+Completed runs are submitted to the backend through the game API.
+The leaderboard records information such as:
+- Player name
+- Company name
+- Score
+- Level reached
+- Control method
+- Timestamp
+- Game/session information
+The **Top 10 Leaderboard** is sorted by highest score, with newer records breaking ties.
+Scores are saved when a run ends because the player either:
+- loses all lives, or
+- completes the final level.
+The game also provides an **Export CSV** option for exporting played-game records.
+## 🏗️ Project Structure
 ```
-Then the admin logs in at:
-`https://YOUR-VERCEL-DOMAIN/admin`
-The password is never placed in frontend JavaScript.
-## 1. Local testing
-Requirements: Node 24+.
-```powershell
+Gravity_Game_Leaderboard_Reset/
+├── api/
+│   └── index.js              # Vercel serverless entry point
+├── levels/
+│   ├── level1.js
+│   ├── level2.js
+│   ├── level3.js
+│   ├── level4.js
+│   ├── level5.js
+│   └── level6.js
+├── scripts/
+│   ├── effects.js            # Particle effects
+│   ├── enemy.js              # Enemy behavior
+│   ├── leaderboard.js        # Local leaderboard helpers
+│   ├── physics.js            # Gravity and physics
+│   └── player.js             # Player state
+├── index.html                # Main game interface
+├── style.css                 # Game styling
+├── game.js                   # Main game engine and gameplay logic
+├── server.js                 # Express API and static server
+├── db.js                     # Database layer
+├── vercel.json               # Vercel configuration
+├── package.json              # Node.js dependencies/scripts
+└── .env.example              # Environment variable template
+```
+## Technology Stack
+### Frontend
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- HTML5 Canvas
+- Web Audio API
+- Browser keyboard and touch events
+### Backend
+- Node.js
+- Express
+- CORS
+- Vercel Serverless Functions
+### Database
+- Turso / libSQL for production
+- SQLite file fallback for local development
+### Deployment
+- Vercel
+## API Endpoints
+The Express backend exposes the following endpoints:
+### Health Check
+```http
+GET /api/health
+```
+Returns the current API status.
+### Validate Player
+```http
+POST /api/validate-name
+```
+Validates the submitted player and company information.
+### Save Game
+```http
+POST /api/games
+```
+Stores the completed game's score and related gameplay information.
+### Top 10 Leaderboard
+```http
+GET /api/leaderboard/top10
+```
+Returns the current Top 10 leaderboard.
+### Export Games
+```http
+GET /api/export/csv
+```
+Exports played-game records as a CSV file.
+## Database
+Production deployments are designed to use **Turso / libSQL** so leaderboard data persists across Vercel serverless invocations.
+The application automatically creates the `game_records` table when the database is initialized.
+### Production environment variables
+```env
+TURSO_DATABASE_URL=
+TURSO_AUTH_TOKEN=
+```
+For local development, the project can fall back to a SQLite database file.
+```env
+PORT=3000
+DB_PATH=./data/leaderboard.db
+```
+> Never commit real database credentials or a real `.env` file to source control.
+## Run Locally
+### Prerequisites
+- Node.js
+- npm
+### Installation
+```bash
 npm install
 ```
-Copy `.env.example` to `.env` and set:
-```env
-ADMIN_USERNAME=event-admin
-ADMIN_PASSWORD=your-test-password
-ADMIN_SESSION_SECRET=use-a-long-random-secret
-EVENT_LIVE=false
+### Environment
+Copy the example environment file:
+```bash
+cp .env.example .env
 ```
-You may leave `DATABASE_URL` empty locally. The app will create:
-`data/leaderboard.db`
-Then:
-```powershell
+For local-only development, you can leave the Turso variables empty and use the SQLite fallback.
+### Start the server
+```bash
 npm start
 ```
-Open:
-- Game: `http://localhost:3000`
-- Admin: `http://localhost:3000/admin`
-- Controller: `http://localhost:3000/controller`
-## 2. Create the production database
-In Vercel, add the **Neon** integration and create/connect a Postgres database. Vercel's Neon integration provisions a managed Postgres database and provides the database connection environment variable.
-The app automatically creates the required tables on first backend use.
-You can also use `schema.sql` manually in a Postgres/Neon SQL editor.
-## 3. Put the project on GitHub
-At the project root:
-```powershell
-git init
-git add .
-git commit -m "Gravity Shift Vercel production build"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
-```
-Do NOT commit `.env`.
-The included `.gitignore` excludes `.env`, `node_modules`, and local SQLite database files.
-## 4. Import into Vercel
-In Vercel:
-**Add New → Project → Import Git Repository**
-Select the Gravity Shift GitHub repository.
-Vercel supports zero-configuration Express deployments.
-Set the environment variables before deploying, especially `DATABASE_URL`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_SESSION_SECRET`.
-Use Node 24 for the project.
-## 5. Test production
-After deployment:
+Then open:
 ```text
-https://YOUR-VERCEL-DOMAIN/api/health
+http://localhost:3000
 ```
-It should report:
-```json
-{
-  "ok": true,
-  "status": "online",
-  "database": "postgres"
-}
+For development with automatic Node.js restarts:
+```bash
+npm run dev
 ```
-Then test:
-```text
-https://YOUR-VERCEL-DOMAIN/
-https://YOUR-VERCEL-DOMAIN/admin
-https://YOUR-VERCEL-DOMAIN/controller
+## Deploy to Vercel
+The project already includes a `vercel.json` configuration and a serverless entry point at `api/index.js`.
+### Using Vercel CLI
+```bash
+npm install -g vercel
+vercel login
+vercel
+vercel --prod
 ```
-## 6. Admin login
-Open:
-`https://YOUR-VERCEL-DOMAIN/admin`
-Enter the same values you placed in Vercel:
-```text
-Username: event-admin
-Password: YOUR_PRIVATE_STRONG_PASSWORD
-```
-The `.env` file being hidden is correct and expected.
-## 7. Admin Top 10 CSV
-After login:
-1. Select a level.
-2. Click **Download Top 10 CSV**.
-3. The backend generates a CSV for that selected level only.
-4. The public game never displays this control.
-## 8. Testing reset
-While:
-```env
-EVENT_LIVE=false
-```
-the admin dashboard has **Clear Test Data**.
-It requires:
-```text
-DELETE ALL TEST DATA
-```
-When:
-```env
-EVENT_LIVE=true
-```
-the reset endpoint is disabled.
-Before the real event, set:
-```env
-EVENT_LIVE=true
-```
-and redeploy.
-## 9. Migrating your existing local SQLite test/event database
-If you already have records in `data/leaderboard.db` and want to move them to Postgres:
-1. Set `DATABASE_URL` to the target Postgres database.
-2. Keep the SQLite file in `data/leaderboard.db`.
-3. Run:
-```powershell
-npm run db:migrate
-```
-The migration script inserts sessions, attempts, and completed records without duplicating existing `game_id` values.
-## 10. Production data model
-The production database contains:
-- `player_sessions`
-- `level_attempts`
-- `game_records`
-`game_records` is the official completed-level history.
-Each completed record includes the player/company identity, level number, completion time, score, level start/completion times, backend completion timestamp, control/connection information, game version, unique game ID and idempotency key.
-The public endpoint only returns the requested level's Top 10:
-```text
-GET /api/leaderboard/level/:levelNumber
-```
-Admin-only endpoints expose complete history and statistics.
-## 11. External controller
-The project retains the WebSocket controller at:
-`/controller`
-The game automatically falls back to local keyboard/touch controls when the external controller disconnects.
-Vercel currently supports WebSockets in Public Beta on Fluid Compute. The controller client should still handle reconnections, and the game's backup controls remain the safety mechanism if the external connection fails.
-## 12. Event launch checklist
-Before the event:
-1. Create/connect Neon Postgres.
-2. Set all Vercel environment variables.
-3. Set `EVENT_LIVE=true`.
-4. Deploy.
-5. Open `/admin`.
-6. Confirm the admin can log in.
-7. Confirm Level 1 Top 10 is empty.
-8. Confirm Level 2 Top 10 is empty.
-9. Confirm the CSV button is only inside admin.
-10. Test one participant with `Company - Player`.
-11. Complete a test level.
-12. Confirm the level result appears in that level's Top 10.
-13. Confirm the admin sees the complete history.
-14. Confirm the CSV downloads the selected level only.
-15. Confirm refresh/redeploy does not erase the database.
-16. Do not delete the Neon production database.
-
-## No public event-link sharing
-
-The application does not add public sharing buttons or public administration. Organizers control access to the event deployment URL separately.
+### Using GitHub + Vercel
+1. Push the project to GitHub.
+2. Import the repository into Vercel.
+3. Use the **Other** framework preset if prompted.
+4. Configure the production environment variables:
+   - `TURSO_DATABASE_URL`
+   - `TURSO_AUTH_TOKEN`
+5. Deploy the project.
+The API routes under `/api/*` are routed to the Vercel serverless function.
+## Gameplay UI
+The game interface includes:
+- Level name and number
+- Current score
+- Crystal count
+- Remaining lives
+- Current gravity direction
+- Gravity-shift countdown
+- Participant information
+- Control status
+- Leaderboard panel
+- CSV export button
+- Level selector
+- Fullscreen button
+- Replay and next-level actions
+## Game Objective
+The ultimate goal is to complete all **100 levels** and achieve the highest possible score.
+**Collect the crystals. Survive the gravity shifts. Avoid the hazards. Reach the goal. Become #1 on the leaderboard.**
+## License
+No specific open-source license is included in the project archive. If this project is intended for public distribution, add an appropriate `LICENSE` file.
