@@ -24,7 +24,7 @@ The system is built as a pipeline, not a single script, because each stage has a
 **Business criteria → Apify Google Maps collection → Duplicate handling → Website enrichment → Public LinkedIn enrichment where available → Data cleaning → Database storage → Google Sheets synchronization → Email campaign**
 
 <p align="center">
-  <img src="leadgen-workflow-diagram.jpeg" alt="Lead generation workflow" width="800">
+  <img src="leadgen-workflow-diagram.jpeg" alt="Lead generation workflow">
 </p>
 *Nine steps, one trigger. The user only touches step one.*
 
@@ -33,7 +33,7 @@ The system is built as a pipeline, not a single script, because each stage has a
 The Flask app is the only part of the system a user directly interacts with. Everything downstream of it runs in the background.
 
 <p align="center">
-  <img src="leadgen-system-architecture.jpeg" alt="System architecture" width="800">
+  <img src="leadgen-system-architecture.jpeg" alt="System architecture">
 </p>
 *Flask hands off jobs to Celery through Redis. Apify does the collecting, the enrichment layer fills in the gaps, and cleaned data flows to PostgreSQL, Google Sheets, and email campaigns.*
 
@@ -72,7 +72,7 @@ That's why the heavy work runs through Celery, with Redis as the message broker.
 ## How a Job Actually Moves Through the System
 
 <p align="center">
-  <img src="leadgen-sequence-diagram.jpeg" alt="Sequence diagram" width="800">
+  <img src="leadgen-sequence-diagram.jpeg" alt="Sequence diagram">
 </p>
 *A user submits criteria once. Flask queues the job, Celery does the work, and the results land in the database and Google Sheets without the user waiting on any of it.*
 
