@@ -20,7 +20,7 @@ A customer message follows this path:
 **Customer → ARZENS frontend → Flask `/chat` endpoint → Conversation management → Intent / request handling → Knowledge retrieval or operational workflow → Response → Conversation storage**
 
 <p align="center">
-  <img src="chatbot-system-architecture.jpeg" alt="Chatbot system architecture" width="800">
+  <img src="chatbot-system-architecture.jpeg" alt="Chatbot system architecture">
 </p>
 *One entry point, several possible destinations. The Conversation Manager decides whether a message needs a retrieved answer or an operational workflow — lead capture, appointment booking, a support ticket, or an appointment check.*
 
@@ -31,7 +31,7 @@ The knowledge side of the system is built as a retrieval pipeline:
 **ARZENS PDFs → PyMuPDF → Text extraction → Chunking with overlap → Sentence Transformers embeddings → ChromaDB → Semantic retrieval → Groq language model → Final response**
 
 <p align="center">
-  <img src="chatbot-rag-architecture.jpeg" alt="RAG architecture" width="800">
+  <img src="chatbot-rag-architecture.jpeg" alt="RAG architecture">
 </p>
 
 *PDFs become chunks, chunks become embeddings, and embeddings live in ChromaDB where they can be searched by meaning, not just keyword.*
@@ -43,7 +43,7 @@ When a customer asks a question, the system doesn't send the question straight t
 ## What Happens When a Customer Asks a Question
 
 <p align="center">
-  <img src="chatbot-sequence-diagram.jpeg" alt="Sequence diagram" width="800">
+  <img src="chatbot-sequence-diagram.jpeg" alt="Sequence diagram">
 </p>
 
 *Every question triggers a retrieval step before generation — the retriever searches ChromaDB for relevant chunks, and only then does Groq generate a response.*
@@ -63,7 +63,7 @@ Complaints are converted into structured support tickets rather than left as uns
 ## How the Different Flows Fit Together
 
 <p align="center">
-  <img src="chatbot-usecase-activity-diagram.jpeg" alt="Use case / activity diagram" width="800">
+  <img src="chatbot-usecase-activity-diagram.jpeg" alt="Use case / activity diagram">
 </p>
 
 *Three distinct operational flows, each ending in the same place: database, Google Sheets, and — where relevant — an email notification.*
