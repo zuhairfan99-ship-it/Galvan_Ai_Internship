@@ -79,7 +79,7 @@ That's why the heavy work runs through Celery, with Redis as the message broker.
 ## From Raw Records to Enriched Leads
 
 <p align="center">
-  <img src="leadgen-data-flow-diagram.jpeg" alt="Data flow diagram" width="800">
+  <img src="leadgen-data-flow-diagram.jpeg" alt="Data flow diagram">
 </p>
 *Raw scraped data goes through deduplication and validation before it's allowed to become a stored, synced lead record.*
 
