@@ -17,7 +17,7 @@ A customer message follows this path:
 
 **Customer → ARZENS frontend → Flask `/chat` endpoint → Conversation management → Intent / request handling → Knowledge retrieval or operational workflow → Response → Conversation storage**
 
-![Chatbot system architecture — Flask backend routing to RAG pipeline, lead capture, appointments, complaints, and check appointment](chatbot-system-architecture.jpeg)
+![Chatbot system architecture](chatbot-system-architecture.jpeg)
 *One entry point, several possible destinations. The Conversation Manager decides whether a message needs a retrieved answer or an operational workflow — lead capture, appointment booking, a support ticket, or an appointment check.*
 
 ## RAG Architecture
@@ -26,7 +26,7 @@ The knowledge side of the system is built as a retrieval pipeline:
 
 **ARZENS PDFs → PyMuPDF → Text extraction → Chunking with overlap → Sentence Transformers embeddings → ChromaDB → Semantic retrieval → Groq language model → Final response**
 
-![RAG architecture — PDF documents to embeddings, ChromaDB retrieval, and Groq-generated response](C:\Users\MYPC\Downloads\files\chatbot-rag-architecture.jpeg)
+![RAG architecture](chatbot-rag-architecture.jpeg)
 *PDFs become chunks, chunks become embeddings, and embeddings live in ChromaDB where they can be searched by meaning, not just keyword.*
 
 PDFs from ARZENS's own material are parsed with PyMuPDF, split into overlapping text chunks so relevant information isn't cut off at an arbitrary boundary, and converted into embeddings with Sentence Transformers. Those embeddings live in ChromaDB, a vector database built for similarity search.
@@ -35,7 +35,7 @@ When a customer asks a question, the system doesn't send the question straight t
 
 ## What Happens When a Customer Asks a Question
 
-![Sequence diagram — customer question moving through frontend, Flask, retriever, ChromaDB, and Groq](C:\Users\MYPC\Downloads\files\chatbot-sequence-diagram.jpeg)
+![Sequence diagram](chatbot-sequence-diagram.jpeg)
 *Every question triggers a retrieval step before generation — the retriever searches ChromaDB for relevant chunks, and only then does Groq generate a response.*
 
 ## Lead Capture
@@ -52,7 +52,7 @@ Complaints are converted into structured support tickets rather than left as uns
 
 ## How the Different Flows Fit Together
 
-![Use case / activity diagram — lead capture flow, appointment flow, and complaint/ticket flow](C:\Users\MYPC\Downloads\files\chatbot-usecase-activity-diagram.jpeg)
+![Use case / activity diagram](chatbot-usecase-activity-diagram.jpeg)
 *Three distinct operational flows, each ending in the same place: database, Google Sheets, and — where relevant — an email notification.*
 
 ## Technology Stack
@@ -117,7 +117,10 @@ CRM integration is the most immediate next step — it's the piece that would co
 ---
 
 **Galvan AI**
-Website: [galvanai.com](https://www.galvanai.com/)
+Website: [galvanai.com](https://www.galvanai.com
+
 LinkedIn: [pk.linkedin.com/company/galvanai](https://pk.linkedin.com/company/galvanai)
+
 Instagram: [@galvan_ai](https://www.instagram.com/galvan_ai/)
+
 YouTube: [@GalvanAi](https://www.youtube.com/@GalvanAi)
