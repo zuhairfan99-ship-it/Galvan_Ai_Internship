@@ -130,7 +130,10 @@ CRM integration is the most immediate next step — it's the piece that would co
 ---
 
 **Galvan AI**
-Website: [galvanai.com](https://www.galvanai.com
+Website: [galvanai.com](https://www.galvanai.com/)
+
 LinkedIn: [pk.linkedin.com/company/galvanai](https://pk.linkedin.com/company/galvanai)
+
 Instagram: [@galvan_ai](https://www.instagram.com/galvan_ai/)
+
 YouTube: [@GalvanAi](https://www.youtube.com/@GalvanAi)
