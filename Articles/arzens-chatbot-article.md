@@ -2,7 +2,7 @@
 
 ### One chatbot, four jobs: answering questions, capturing leads, booking appointments, and logging complaints — all grounded in the company's own documentation
 
-![ARZENS chatbot overview — conversational support, RAG flow, business integrations, and system architecture](images/chatbot-hero-overview.jpeg)
+![ARZENS chatbot overview](chatbot-hero-overview.jpeg)
 *The four pieces that make this more than a chat widget: retrieval-grounded answers, real business integrations, and a Flask backend tying them together.*
 
 ARZENS, a cybersecurity and technology services company, deals with a mix of customer interactions that don't fit neatly into one channel: general questions about services, consultation requests, appointment scheduling, complaints, and status checks on existing appointments. Handled separately — a contact form here, a phone line there, email for complaints — these interactions lose context between each other. A customer who already explained what they need shouldn't have to repeat it three messages later just because the conversation crossed from "question" to "booking."
