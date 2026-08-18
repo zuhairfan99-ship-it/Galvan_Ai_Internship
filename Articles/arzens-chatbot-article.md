@@ -2,8 +2,9 @@
 
 ### One chatbot, four jobs: answering questions, capturing leads, booking appointments, and logging complaints — all grounded in the company's own documentation
 
-![ARZENS chatbot overview](chatbot-hero-overview.jpeg)
-
+<p align="center">
+  <img src="chatbot-hero-overview.jpeg" alt="ARZENS chatbot overview" width="800">
+</p>
 *The four pieces that make this more than a chat widget: retrieval-grounded answers, real business integrations, and a Flask backend tying them together.*
 
 ARZENS, a cybersecurity and technology services company, deals with a mix of customer interactions that don't fit neatly into one channel: general questions about services, consultation requests, appointment scheduling, complaints, and status checks on existing appointments. Handled separately — a contact form here, a phone line there, email for complaints — these interactions lose context between each other. A customer who already explained what they need shouldn't have to repeat it three messages later just because the conversation crossed from "question" to "booking."
@@ -29,7 +30,9 @@ The knowledge side of the system is built as a retrieval pipeline:
 
 **ARZENS PDFs → PyMuPDF → Text extraction → Chunking with overlap → Sentence Transformers embeddings → ChromaDB → Semantic retrieval → Groq language model → Final response**
 
-![RAG architecture](chatbot-rag-architecture.jpeg)
+<p align="center">
+  <img src="chatbot-rag-architecture.jpeg" alt="RAG architecture" width="800">
+</p>
 
 *PDFs become chunks, chunks become embeddings, and embeddings live in ChromaDB where they can be searched by meaning, not just keyword.*
 
@@ -39,7 +42,9 @@ When a customer asks a question, the system doesn't send the question straight t
 
 ## What Happens When a Customer Asks a Question
 
-![Sequence diagram](chatbot-sequence-diagram.jpeg)
+<p align="center">
+  <img src="chatbot-sequence-diagram.jpeg" alt="Sequence diagram" width="800">
+</p>
 
 *Every question triggers a retrieval step before generation — the retriever searches ChromaDB for relevant chunks, and only then does Groq generate a response.*
 
@@ -57,7 +62,9 @@ Complaints are converted into structured support tickets rather than left as uns
 
 ## How the Different Flows Fit Together
 
-![Use case / activity diagram](chatbot-usecase-activity-diagram.jpeg)
+<p align="center">
+  <img src="chatbot-usecase-activity-diagram.jpeg" alt="Use case / activity diagram" width="800">
+</p>
 
 *Three distinct operational flows, each ending in the same place: database, Google Sheets, and — where relevant — an email notification.*
 
