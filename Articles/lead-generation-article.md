@@ -2,7 +2,9 @@
 
 ### How we turned a manual, tab-by-tab prospecting process into a pipeline that runs on its own
 
-![Lead generation workflow overview — from criteria to Google Sheets and email campaigns](leadgen-hero-overview.jpeg)
+<p align="center">
+  <img src="leadgen-hero-overview.jpeg" alt="Lead generation workflow overview" width="800">
+</p>
 *The full loop: define criteria once, and the system handles collection, enrichment, sync, and outreach.*
 
 Finding a business is easy. Turning that business into a clean, usable prospect record is not.
@@ -21,14 +23,18 @@ The system is built as a pipeline, not a single script, because each stage has a
 
 **Business criteria → Apify Google Maps collection → Duplicate handling → Website enrichment → Public LinkedIn enrichment where available → Data cleaning → Database storage → Google Sheets synchronization → Email campaign**
 
-![Lead generation workflow, step by step](leadgen-workflow-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-workflow-diagram.jpeg" alt="Lead generation workflow" width="800">
+</p>
 *Nine steps, one trigger. The user only touches step one.*
 
 ## System Architecture
 
 The Flask app is the only part of the system a user directly interacts with. Everything downstream of it runs in the background.
 
-![System architecture — Flask, Redis, Celery, Apify, website enrichment, and data cleaning](leadgen-system-architecture.jpeg)
+<p align="center">
+  <img src="leadgen-system-architecture.jpeg" alt="System architecture" width="800">
+</p>
 *Flask hands off jobs to Celery through Redis. Apify does the collecting, the enrichment layer fills in the gaps, and cleaned data flows to PostgreSQL, Google Sheets, and email campaigns.*
 
 ## Collection Layer
@@ -65,12 +71,16 @@ That's why the heavy work runs through Celery, with Redis as the message broker.
 
 ## How a Job Actually Moves Through the System
 
-![Sequence diagram — lead collection and sync](leadgen-sequence-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-sequence-diagram.jpeg" alt="Sequence diagram" width="800">
+</p>
 *A user submits criteria once. Flask queues the job, Celery does the work, and the results land in the database and Google Sheets without the user waiting on any of it.*
 
 ## From Raw Records to Enriched Leads
 
-![Data flow diagram — raw business data to enriched, synced lead records](leadgen-data-flow-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-data-flow-diagram.jpeg" alt="Data flow diagram" width="800">
+</p>
 *Raw scraped data goes through deduplication and validation before it's allowed to become a stored, synced lead record.*
 
 ## Google Sheets Integration
