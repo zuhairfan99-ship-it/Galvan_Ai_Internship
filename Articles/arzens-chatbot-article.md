@@ -18,8 +18,9 @@ A customer message follows this path:
 
 **Customer → ARZENS frontend → Flask `/chat` endpoint → Conversation management → Intent / request handling → Knowledge retrieval or operational workflow → Response → Conversation storage**
 
-![Chatbot system architecture](chatbot-system-architecture.jpeg)
-
+<p align="center">
+  <img src="chatbot-system-architecture.jpeg" alt="Chatbot system architecture" width="800">
+</p>
 *One entry point, several possible destinations. The Conversation Manager decides whether a message needs a retrieved answer or an operational workflow — lead capture, appointment booking, a support ticket, or an appointment check.*
 
 ## RAG Architecture
