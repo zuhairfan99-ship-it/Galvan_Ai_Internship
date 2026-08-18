@@ -3,6 +3,7 @@
 ### One chatbot, four jobs: answering questions, capturing leads, booking appointments, and logging complaints — all grounded in the company's own documentation
 
 ![ARZENS chatbot overview](chatbot-hero-overview.jpeg)
+
 *The four pieces that make this more than a chat widget: retrieval-grounded answers, real business integrations, and a Flask backend tying them together.*
 
 ARZENS, a cybersecurity and technology services company, deals with a mix of customer interactions that don't fit neatly into one channel: general questions about services, consultation requests, appointment scheduling, complaints, and status checks on existing appointments. Handled separately — a contact form here, a phone line there, email for complaints — these interactions lose context between each other. A customer who already explained what they need shouldn't have to repeat it three messages later just because the conversation crossed from "question" to "booking."
@@ -18,6 +19,7 @@ A customer message follows this path:
 **Customer → ARZENS frontend → Flask `/chat` endpoint → Conversation management → Intent / request handling → Knowledge retrieval or operational workflow → Response → Conversation storage**
 
 ![Chatbot system architecture](chatbot-system-architecture.jpeg)
+
 *One entry point, several possible destinations. The Conversation Manager decides whether a message needs a retrieved answer or an operational workflow — lead capture, appointment booking, a support ticket, or an appointment check.*
 
 ## RAG Architecture
@@ -27,6 +29,7 @@ The knowledge side of the system is built as a retrieval pipeline:
 **ARZENS PDFs → PyMuPDF → Text extraction → Chunking with overlap → Sentence Transformers embeddings → ChromaDB → Semantic retrieval → Groq language model → Final response**
 
 ![RAG architecture](chatbot-rag-architecture.jpeg)
+
 *PDFs become chunks, chunks become embeddings, and embeddings live in ChromaDB where they can be searched by meaning, not just keyword.*
 
 PDFs from ARZENS's own material are parsed with PyMuPDF, split into overlapping text chunks so relevant information isn't cut off at an arbitrary boundary, and converted into embeddings with Sentence Transformers. Those embeddings live in ChromaDB, a vector database built for similarity search.
@@ -36,6 +39,7 @@ When a customer asks a question, the system doesn't send the question straight t
 ## What Happens When a Customer Asks a Question
 
 ![Sequence diagram](chatbot-sequence-diagram.jpeg)
+
 *Every question triggers a retrieval step before generation — the retriever searches ChromaDB for relevant chunks, and only then does Groq generate a response.*
 
 ## Lead Capture
@@ -53,6 +57,7 @@ Complaints are converted into structured support tickets rather than left as uns
 ## How the Different Flows Fit Together
 
 ![Use case / activity diagram](chatbot-usecase-activity-diagram.jpeg)
+
 *Three distinct operational flows, each ending in the same place: database, Google Sheets, and — where relevant — an email notification.*
 
 ## Technology Stack
@@ -118,9 +123,6 @@ CRM integration is the most immediate next step — it's the piece that would co
 
 **Galvan AI**
 Website: [galvanai.com](https://www.galvanai.com
-
 LinkedIn: [pk.linkedin.com/company/galvanai](https://pk.linkedin.com/company/galvanai)
-
 Instagram: [@galvan_ai](https://www.instagram.com/galvan_ai/)
-
 YouTube: [@GalvanAi](https://www.youtube.com/@GalvanAi)
