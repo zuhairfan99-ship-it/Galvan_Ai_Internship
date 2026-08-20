@@ -32,7 +32,9 @@ The system is built as a pipeline, not a single script, because each stage has a
 
 The Flask app is the only part of the system a user directly interacts with. Everything downstream of it runs in the background.
 
-![System architecture — Flask, Redis, Celery, Apify, website enrichment, and data cleaning](leadgen-system-architecture.jpeg)
+<p align="center">
+  <img src="leadgen-system-architecture.jpeg" alt="System architecture">
+</p>
 *Flask hands off jobs to Celery through Redis. Apify does the collecting, the enrichment layer fills in the gaps, and cleaned data flows to PostgreSQL, Google Sheets, and email campaigns.*
 
 ## Collection Layer
@@ -69,12 +71,16 @@ That's why the heavy work runs through Celery, with Redis as the message broker.
 
 ## How a Job Actually Moves Through the System
 
-![Sequence diagram — lead collection and sync](leadgen-sequence-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-sequence-diagram.jpeg" alt="Sequence diagram">
+</p>
 *A user submits criteria once. Flask queues the job, Celery does the work, and the results land in the database and Google Sheets without the user waiting on any of it.*
 
 ## From Raw Records to Enriched Leads
 
-![Data flow diagram — raw business data to enriched, synced lead records](leadgen-data-flow-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-data-flow-diagram.jpeg" alt="Data flow diagram">
+</p>
 *Raw scraped data goes through deduplication and validation before it's allowed to become a stored, synced lead record.*
 
 ## Google Sheets Integration
