@@ -2,7 +2,9 @@
 
 ### How we turned a manual, tab-by-tab prospecting process into a pipeline that runs on its own
 
-![Lead generation workflow overview — from criteria to Google Sheets and email campaigns](leadgen-hero-overview.jpeg)
+<p align="center">
+  <img src="leadgen-hero-overview.jpeg" alt="Lead generation workflow overview" width="800">
+</p>
 *The full loop: define criteria once, and the system handles collection, enrichment, sync, and outreach.*
 
 Finding a business is easy. Turning that business into a clean, usable prospect record is not.
@@ -21,7 +23,9 @@ The system is built as a pipeline, not a single script, because each stage has a
 
 **Business criteria → Apify Google Maps collection → Duplicate handling → Website enrichment → Public LinkedIn enrichment where available → Data cleaning → Database storage → Google Sheets synchronization → Email campaign**
 
-![Lead generation workflow, step by step](leadgen-workflow-diagram.jpeg)
+<p align="center">
+  <img src="leadgen-workflow-diagram.jpeg" alt="Lead generation workflow">
+</p>
 *Nine steps, one trigger. The user only touches step one.*
 
 ## System Architecture
