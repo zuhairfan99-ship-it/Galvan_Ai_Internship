@@ -44,7 +44,7 @@ This separation keeps the workflow easy to understand and makes it possible to e
 
 ## The Vapi Voice Agent
 <p align="center">
-  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg?raw=true" alt="Vapi voice agent configuration" width="800">
+  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg?raw=true" alt="Vapi voice agent configuration">
 </p>
 *Figure 2. Vapi configuration used for the THE ARZENS voice-agent implementation.*
 The Vapi configuration presents the agent as an AI voice receptionist and customer-support assistant for **ARZENS**.
@@ -65,7 +65,7 @@ The supplied webhook logs show **“End Of Call Report”** requests using the *
 The webhook therefore acts as the bridge between the conversation and the business automation.
 ## Routing Layer: Make.com
 <p align="center">
-  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg?raw=true" alt="Make.com voice-agent automation workflow" width="800">
+  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg?raw=true" alt="Make.com voice-agent automation workflow">
 </p>
 *Figure 3. Make.com workflow used to route booking and complaint requests.*
 Make.com is the decision and automation layer.
