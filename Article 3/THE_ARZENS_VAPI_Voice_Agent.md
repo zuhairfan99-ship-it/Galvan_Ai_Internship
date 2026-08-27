@@ -1,4 +1,3 @@
-# GALVAN AI 
 # THE ARZENS VAPI VOICE AGENT
 **From business calls to automated actions**
 *A practical implementation using Vapi, webhooks, Make.com, Google Calendar and Google Sheets.*
@@ -30,7 +29,8 @@ The advantage of this structure is that the voice conversation does not need to 
 ## System Architecture
 <p align="center">
   <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image1.jpg?raw=true" alt="Simplified architecture of the supplied voice-agent workflow" width="800">
-</p>
+</p>\
+
 *Figure 1. Simplified architecture of the supplied voice-agent workflow.*
 The architecture begins with the caller and ends with a structured business action.
 - **Caller:** starts the conversation with the voice agent.
@@ -46,6 +46,7 @@ This separation keeps the workflow easy to understand and makes it possible to e
 <p align="center">
   <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg?raw=true" alt="Vapi voice agent configuration">
 </p>
+
 *Figure 2. Vapi configuration used for the THE ARZENS voice-agent implementation.*
 The Vapi configuration presents the agent as an AI voice receptionist and customer-support assistant for **ARZENS**.
 The configured responsibilities include:
@@ -67,6 +68,7 @@ The webhook therefore acts as the bridge between the conversation and the busine
 <p align="center">
   <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg?raw=true" alt="Make.com voice-agent automation workflow">
 </p>
+
 *Figure 3. Make.com workflow used to route booking and complaint requests.*
 Make.com is the decision and automation layer.
 The **Voice Intent Router** separates the incoming request into two main paths.
@@ -194,4 +196,11 @@ That is the practical value of the automation: **less manual copying, clearer re
 This article is based on the supplied THE ARZENS workflow screenshots and the supplied Galvan AI project article. The architecture and workflow descriptions follow those materials. Details that are not visible in the supplied screenshots are presented as recommendations rather than confirmed implementation facts.
 
 **THE ARZENS:** https://www.thearzens.tech/
-**Galvan AI:** https://galvanai.com/
+**Galvan AI**
+Website: [galvanai.com](https://www.galvanai.com/)
+
+LinkedIn: [pk.linkedin.com/company/galvanai](https://pk.linkedin.com/company/galvanai)
+
+Instagram: [@galvan_ai](https://www.instagram.com/galvan_ai/)
+
+YouTube: [@GalvanAi](https://www.youtube.com/@GalvanAi)
