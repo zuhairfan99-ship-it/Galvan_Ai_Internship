@@ -1,4 +1,4 @@
-# GALVAN AI • THE ARZENS VAPI VOICE AGENT
+# GALVAN AI 
 # THE ARZENS VAPI VOICE AGENT
 **From business calls to automated actions**
 *A practical implementation using Vapi, webhooks, Make.com, Google Calendar and Google Sheets.*
@@ -6,7 +6,7 @@
 **Implementation:** Galvan AI  
 **Voice agent:** Vapi  
 **Automation:** Make.com + Google Calendar + Google Sheets
----
+
 ## From Business Calls to Automated Actions
 A phone call is useful only when the information from that call reaches the right place. For **THE ARZENS**, the voice-agent workflow connects a caller's conversation to the systems used for appointments and complaint records.
 The workflow uses **Vapi** as the voice-agent layer and webhook connection, while **Make.com** handles the automation logic. The supplied workflow shows a custom webhook feeding a **Voice Intent Router**. Booking requests move to Google Calendar and Google Sheets, while complaints move to a separate Google Sheets path. Each route then returns a webhook response.
@@ -28,7 +28,9 @@ The system is designed as a short and understandable automation pipeline. Each p
 **Vapi Voice Agent → Webhook → Make.com → Voice Intent Router → Booking or Complaint → Calendar/Sheets → Webhook Response**
 The advantage of this structure is that the voice conversation does not need to know how the business records are stored. Vapi handles the conversation, while Make.com handles the business workflow.
 ## System Architecture
-![Simplified architecture of the supplied voice-agent workflow](https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image1.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image1.jpg?raw=true" alt="Simplified architecture of the supplied voice-agent workflow" width="800">
+</p>
 *Figure 1. Simplified architecture of the supplied voice-agent workflow.*
 The architecture begins with the caller and ends with a structured business action.
 - **Caller:** starts the conversation with the voice agent.
@@ -39,8 +41,11 @@ The architecture begins with the caller and ends with a structured business acti
 - **Complaint route:** records the complaint in Google Sheets.
 - **Webhook response:** returns a response after the selected workflow has been processed.
 This separation keeps the workflow easy to understand and makes it possible to extend individual parts later.
+
 ## The Vapi Voice Agent
-![Vapi voice agent configuration](https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg?raw=true" alt="Vapi voice agent configuration" width="800">
+</p>
 *Figure 2. Vapi configuration used for the THE ARZENS voice-agent implementation.*
 The Vapi configuration presents the agent as an AI voice receptionist and customer-support assistant for **ARZENS**.
 The configured responsibilities include:
@@ -52,16 +57,20 @@ The configured responsibilities include:
 - Supporting general customer interactions.
 The agent is designed to communicate naturally and concisely while collecting the information required for the next workflow step.
 The configuration also uses company-specific knowledge files. This allows the voice agent to work with information relevant to the business rather than relying only on a generic conversation.
+
 ## Collection Layer: The Webhook
 The webhook is the hand-off point between Vapi and Make.com.
 After the call reaches its completed stage, Vapi sends the relevant call information to the **Make.com custom webhook**. Make.com can then use that information to continue the automation.
 The supplied webhook logs show **“End Of Call Report”** requests using the **POST** method and returning **HTTP 200** responses. These responses provide an operational indication that the webhook is receiving the requests successfully.
 The webhook therefore acts as the bridge between the conversation and the business automation.
 ## Routing Layer: Make.com
-![Make.com voice-agent automation workflow](https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg?raw=true" alt="Make.com voice-agent automation workflow" width="800">
+</p>
 *Figure 3. Make.com workflow used to route booking and complaint requests.*
 Make.com is the decision and automation layer.
 The **Voice Intent Router** separates the incoming request into two main paths.
+
 ### Booking / Consultation
 The booking route performs the following actions:
 1. Receives the completed call information.
@@ -183,12 +192,6 @@ The core idea is simple: a caller speaks, the system identifies the purpose of t
 That is the practical value of the automation: **less manual copying, clearer records and a workflow that can grow with the business.**
 ## Source and Scope
 This article is based on the supplied THE ARZENS workflow screenshots and the supplied Galvan AI project article. The architecture and workflow descriptions follow those materials. Details that are not visible in the supplied screenshots are presented as recommendations rather than confirmed implementation facts.
+
 **THE ARZENS:** https://www.thearzens.tech/
 **Galvan AI:** https://galvanai.com/
-### Article Images
-- **Figure 1 — Simplified architecture:**  
-  https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image1.jpg
-- **Figure 2 — Vapi voice-agent configuration:**  
-  https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%202.jpg
-- **Figure 3 — Make.com automation workflow:**  
-  https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image%203.jpg
