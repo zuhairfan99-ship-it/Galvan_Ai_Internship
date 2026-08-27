@@ -5,6 +5,7 @@
 <p align="center">
   <img src="leadgen-hero-overview.jpeg" alt="Lead generation workflow overview" width="800">
 </p>
+
 *The full loop: define criteria once, and the system handles collection, enrichment, sync, and outreach.*
 
 Finding a business is easy. Turning that business into a clean, usable prospect record is not.
