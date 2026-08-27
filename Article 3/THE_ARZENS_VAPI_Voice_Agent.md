@@ -196,6 +196,7 @@ That is the practical value of the automation: **less manual copying, clearer re
 This article is based on the supplied THE ARZENS workflow screenshots and the supplied Galvan AI project article. The architecture and workflow descriptions follow those materials. Details that are not visible in the supplied screenshots are presented as recommendations rather than confirmed implementation facts.
 
 **THE ARZENS:** https://www.thearzens.tech/
+
 **Galvan AI**
 Website: [galvanai.com](https://www.galvanai.com/)
 
