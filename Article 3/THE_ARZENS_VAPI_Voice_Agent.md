@@ -29,7 +29,7 @@ The advantage of this structure is that the voice conversation does not need to 
 ## System Architecture
 <p align="center">
   <img src="https://github.com/zuhairfan99-ship-it/Galvan_Ai_Internship/blob/main/Article%203/image1.jpg?raw=true" alt="Simplified architecture of the supplied voice-agent workflow" width="800">
-</p>\
+</p>
 
 *Figure 1. Simplified architecture of the supplied voice-agent workflow.*
 The architecture begins with the caller and ends with a structured business action.
